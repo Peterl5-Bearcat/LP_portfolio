@@ -1,0 +1,558 @@
+/*
+L.Peters MechE Portfolio
+HTML Code 
+Date Created: June 5, 2026
+*/
+
+/*
+L.Peters MechE Portfolio
+CSS Stylesheet
+Date Updated: June 14, 2026
+*/
+
+/* Setting adaptive screen size with percentage */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Reset basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Source Sans 3', sans-serif, Tahoma, Geneva, Verdana;
+}
+
+body {
+    background-color: #292929;
+    height: 1500px; /* Gives your window plenty of track depth to register mouse scrolls */
+}
+
+/* Floating Menu Styling */
+.floating-menu {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.75); /* Semi-transparent white background */
+    backdrop-filter: blur(10px);                  /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;           
+    padding: 0 30px;        /* Slightly bumped up for large displays */
+    border: 1px solid #ddd; 
+    border-radius: 50px;        /* pillbox effect*/
+    box-sizing: border-box;     /* Keeps padding inside the calculation */
+    width: 95%;                 /* Spans 95% of any screen size */
+    max-width: 95%;             /* Removes the 1100px desktop ceiling limit */
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #111;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #0077ff;
+}
+
+.content {
+    margin-top: 120px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Responsive Breakdown for Tablets and Mobile */
+@media screen and (max-width: 768px) {
+    .floating-menu {
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 0;
+        padding: 15px 20px;
+        height: auto;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    .content {
+        margin-top: 140px;
+    }
+}
+
+/* CSS for video placeholder box */
+.video-placeholder {
+    width: 100%;
+    height: 100vh;
+    background-color: #2e2e2e;
+    margin-top: 0px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.video-placeholder .placeholder-text {
+    margin-top: 80px;
+}
+
+/* --- Overview & Blur Transition Styling --- */
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(15px);           
+    -webkit-backdrop-filter: blur(15px);   
+    z-index: 5;                            
+    opacity: 0;                            
+    pointer-events: none;                  
+    transition: opacity 0.8s ease;
+}
+
+.overview-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;                        
+    height: 100vh;                       
+    background-color: rgba(19, 16, 16, 0.1); 
+    z-index: 10;                         
+    display: flex;
+    flex-direction: column;              
+    justify-content: center;             
+    align-items: center;                 
+    opacity: 0;                          
+    pointer-events: none;
+    transition: opacity 0.8s ease;       
+}
+
+.overview-content {
+    width: 90%;                          
+    max-width: 750px;                    
+    text-align: center;
+    padding: 20px;
+}
+
+.overview-content h2 {          
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.overview-content p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #ffffff;
+    margin-bottom: 40px;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    border-top: 1px solid #d1d1d1;
+    padding-top: 20px;
+    flex-wrap: wrap;                 
+    width: 100%;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #0077ff;
+}
+
+.blur-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.overview-section.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* --- PAGES SECTIONS --- */
+#projects-page {
+    background-color: #ffffff; 
+}
+/*------------------------------------------------------------------------------------------------------------------------*/
+/* ===================================================
+   GLOBAL STYLES & RESETS
+   =================================================== */
+#about-page {
+    background-color: #ffffff; 
+}
+
+body {
+    background-color: #292929;
+    font-family: 'Source Sans 3', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===================================================
+   ANIMATION CONFIGURATIONS (Fixes the stacking issue)
+   =================================================== */
+.fade-in-on-load {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.fade-in-on-load.active {
+    opacity: 1;
+}
+
+/* Initial state for your scroll animation elements */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Fired cleanly by script.js when you scroll to them */
+.reveal-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===================================================
+   HERO BANNER & OVERLAY TEXT
+   =================================================== */
+.about-images {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Shortened banner height */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.about-bg-img {
+    width: 100%;
+    height: 100%;     
+    object-fit: cover; 
+    object-position: 50% 80%; /* Adjusted vertical alignment center point */
+    display: block;
+}
+
+.about-overlay-text {
+    position: absolute;
+    bottom: 8%;         
+    left: 5%;              
+    color: #ffffff;         
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+    z-index: 2;
+}
+
+.about-overlay-text h1 {
+    font-size: 6rem;   
+    font-weight: 700;    
+    letter-spacing: 1px; 
+    margin: 0;
+}
+
+/* ===================================================
+   OVERVIEW ROW (Side-by-Side left Aligned)
+   =================================================== */
+.about-split-row {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 30px;
+    align-items: center;
+    margin: 60px 0 40px 0;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .about-split-row {
+        grid-template-columns: 1.2fr 0.8fr; 
+        gap: 60px; 
+        text-align: left; /* Aligns overview type right */
+        align-items: start; /* Aligns text top flush with photo top */
+    }
+
+    .image-column {
+        display: flex;
+        justify-content: flex-end; /* Puts first picture right */
+    }
+}
+
+.text-column h1 {
+    margin-top: 0; /* Clears hidden browser spacing */
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #000000;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
+
+}
+
+.text-column p {
+    color: #000000;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
+
+}
+
+.about-5-img {
+    width: 100%;
+    max-width: 650px; /* Increased from 500px to make it significantly larger */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: #444444;
+    margin: 60px 0;
+}
+
+/* ===================================================
+   6-PHOTO GALLERY GRID (Forced Grid Layout)
+   =================================================== */
+.photo-grid-container {
+    margin-bottom: 80px;
+    width: 100%;
+}
+
+.gallery-title {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* Main Layout Engine */
+.photo-grid {
+    display: grid !important; 
+    grid-template-columns: repeat(1, 1fr) !important; /* Mobile default stack */
+    gap: 25px !important;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 250px; 
+    object-fit: cover; 
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Desktop override: Forces elements to snap side-by-side into 2 rows of 3 */
+@media screen and (min-width: 768px) {
+    .photo-grid {
+        grid-template-columns: repeat(3, 1fr) !important; 
+    }
+}
+/*------------------------------------------------------------------------------------------------------------------------*/
+#experience-page {
+    background-color: #ffffff; 
+}
+/* ===================================================
+   EXPERIENCE PAGE MATCHED HORIZONTAL TIMELINE
+   =================================================== */
+
+/* Normal vertical intro block */
+.experience-overview {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.experience-overview h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.scroll-arrow {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #0077ff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.timeline-scroll-track {
+    position: relative;
+    height: 300vh; /* This dictates the length of your scroll track depth */
+    width: 100%;
+    background: transparent;
+    z-index: 100;
+}
+
+.timeline-sticky-window {
+    position: absolute; /* Handled dynamically by JS now */
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.timeline-horizontal-content {
+    display: flex;
+    gap: 50px;
+    padding: 0 10%;
+    will-change: transform;
+    /* Remove the var(--scroll-offset) link, we are using direct transform now */
+}
+
+/* Individual Card Blocks */
+.timeline-card {
+    flex-shrink: 0;
+    width: 350px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 40px 30px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Connecting bar line layout */
+.timeline-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -51px;
+    width: 50px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.timeline-card:last-child::before {
+    display: none;
+}
+
+.item-date {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #0077ff;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.timeline-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.timeline-card p {
+    color: #cccccc;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Spacing to let users scroll past the timeline naturally */
+.experience-footer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+}
+/*------------------------------------------------------------------------------------------------------------------------*/
+#connect-page {
+    background-color: #ffffff; 
+}
+/*------------------------------------------------------------------------------------------------------------------------*/
+
+
+/* --- SCROLL REVEAL BLUEPRINT --- */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px); 
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform; 
+}
+
+.reveal-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0); 
+}
+
+/* --- IMMEDIATE LOAD ENTRANCE BLUEPRINT --- */
+.fade-in-on-load {
+    animation: loadSlideUp 1.2s ease-out forwards;
+    visibility: hidden;
+}
+
+@keyframes loadSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); 
+        visibility: visible;         
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);    
+        visibility: visible;
+    }
+}
