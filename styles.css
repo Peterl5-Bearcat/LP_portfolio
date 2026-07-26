@@ -10,7 +10,30 @@ CSS Stylesheet
 Date Updated: June 14, 2026
 */
 
+/* #region --- opening --- */
 /* Setting adaptive screen size with percentage */
+
+@font-face {
+  font-family: 'Montserrat Alternates';
+  src: url('font/MontserratAlternates-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat Alternates';
+  src: url('font/MontserratAlternates-Medium.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat Alternates';
+  src: url('font/MontserratAlternates-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 .container {
     width: 90%;
     max-width: 1200px;
@@ -22,48 +45,65 @@ Date Updated: June 14, 2026
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Source Sans 3', sans-serif, Tahoma, Geneva, Verdana;
+    font-family: 'Montserrat Alternates', sans-serif, Tahoma, Geneva, Verdana;
 }
 
 body {
+    font-family: 'Montserrat Alternates', sans-serif !important;
     background-color: #292929;
-    height: 1500px; /* Gives your window plenty of track depth to register mouse scrolls */
+    height: 1000px; /* Gives your window plenty of track depth to register mouse scrolls */
+}
+a, button, imput{
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
-/* Floating Menu Styling */
-.floating-menu {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(255, 255, 255, 0.75); /* Semi-transparent white background */
-    backdrop-filter: blur(10px);                  /* Frosted glass effect */
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    transition: all 0.3s ease;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;           
-    padding: 0 30px;        /* Slightly bumped up for large displays */
-    border: 1px solid #ddd; 
-    border-radius: 50px;        /* pillbox effect*/
-    box-sizing: border-box;     /* Keeps padding inside the calculation */
-    width: 95%;                 /* Spans 95% of any screen size */
-    max-width: 95%;             /* Removes the 1100px desktop ceiling limit */
-}
+/* Floating Menu Styling */ 
+.floating-menu { 
+  position: fixed; 
+  top: 20px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  background-color: rgba(255, 255, 255, 0.75); /* Semi-transparent white background */ 
+  backdrop-filter: blur(10px); /* Frosted glass effect */ 
+  -webkit-backdrop-filter: blur(10px); 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+  z-index: 1000; 
+  transition: all 0.3s ease; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  height: 60px; 
+  padding: 0 30px; /* Slightly bumped up for large displays */ 
+  border: 1px solid #ddd; 
+  border-radius: 50px; /* pillbox effect*/ 
+  box-sizing: border-box; /* Keeps padding inside the calculation */ 
+  width: 95%; /* Spans 95% of any screen size */ 
+  max-width: 95%; /* Removes the 1100px desktop ceiling limit */ 
+} 
 
 .logo {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #111;
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.logo a:hover {
+    color: #0077ff;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 25px;
+    gap: 15px;
+    align-items: center;
 }
 
 .nav-links a {
@@ -105,7 +145,7 @@ body {
     }
     
     .nav-links a {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     .content {
@@ -114,23 +154,57 @@ body {
 }
 
 /* CSS for video placeholder box */
-.video-placeholder {
-    width: 100%;
-    height: 100vh;
-    background-color: #2e2e2e;
-    margin-top: 0px;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
-    font-size: 1.5rem;
-    font-weight: 500;
+
+
+/*position of quote in video window*/
+/* Position and transition for quote section */
+.text-over-video { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; 
+    height: 100vh; 
+    background-color: rgba(19, 16, 16, 0.1); 
+    z-index: 20; /* Sits at the same layer as overview before scroll */
+    opacity: 1; 
+    pointer-events: auto; 
+    transition: opacity 0.8s ease; /* Smoothly fades out when hidden */
 }
 
-.video-placeholder .placeholder-text {
-    margin-top: 80px;
+/* Quote centering box */
+.quote {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Locks quote in dead center of the screen */
+    width: 90%; 
+    max-width: 750px; 
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    
+}
+
+.quote h2 { 
+    font-family: 'Roboto',  sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.quote p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #ffffff;
+    margin-bottom: 0px;
+    font-style: italic;
+}
+
+/* Rule to hide/fade out quote on scroll */
+.text-over-video.hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 /* --- Overview & Blur Transition Styling --- */
@@ -154,7 +228,7 @@ body {
     top: 0;
     left: 0;
     width: 100vw;                        
-    height: 100vh;                       
+    height: 100vh;         
     background-color: rgba(19, 16, 16, 0.1); 
     z-index: 10;                         
     display: flex;
@@ -182,6 +256,7 @@ body {
 .overview-content p {
     font-size: 1.15rem;
     line-height: 1.6;
+    text-align: justify;
     color: #ffffff;
     margin-bottom: 40px;
 }
@@ -219,21 +294,32 @@ body {
     pointer-events: auto;
 }
 
+/* #endregion */
+
 /* --- PAGES SECTIONS --- */
+/* #region --- projects --- */
+
+
+
 #projects-page {
     background-color: #ffffff; 
 }
+
+/* #endregion */
 /*------------------------------------------------------------------------------------------------------------------------*/
 /* ===================================================
    GLOBAL STYLES & RESETS
    =================================================== */
+
+/* #region --- about --- */
+
 #about-page {
     background-color: #ffffff; 
 }
 
 body {
     background-color: #292929;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'montserrat alternates', Source Sans3, sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -300,6 +386,7 @@ body {
 }
 
 .about-overlay-text h1 {
+    font-family: 'Montserrat Alternates', sans-serif;
     font-size: 6rem;   
     font-weight: 700;    
     letter-spacing: 1px; 
@@ -401,7 +488,14 @@ body {
         grid-template-columns: repeat(3, 1fr) !important; 
     }
 }
+
+
+/* #endregion */
 /*------------------------------------------------------------------------------------------------------------------------*/
+/* #region --- experience --- */
+
+
+
 #experience-page {
     background-color: #ffffff; 
 }
@@ -517,13 +611,18 @@ body {
     align-items: center;
 }
 
-}
+/* #endregion */
 /*------------------------------------------------------------------------------------------------------------------------*/
-#connect-page {
-    background-color: #ffffff; 
-}
-/*------------------------------------------------------------------------------------------------------------------------*/
+/* #region --- connect --- */
 
+#connect-page {
+    background-color: #412323; 
+}
+
+
+/* #endregion */
+/*------------------------------------------------------------------------------------------------------------------------*/
+/* #region --- Scroll reveal --- */
 
 /* --- SCROLL REVEAL BLUEPRINT --- */
 .reveal-on-scroll {
@@ -556,3 +655,5 @@ body {
         visibility: visible;
     }
 }
+
+/* #endregion */
