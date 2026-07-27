@@ -23,16 +23,24 @@ Date Updated: June 14, 2026
 @font-face {
   font-family: 'Montserrat Alternates';
   src: url('font/MontserratAlternates-Medium.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
+  font-weight: 500;
+  font-style: medium;
 }
 
 @font-face {
   font-family: 'Montserrat Alternates';
   src: url('font/MontserratAlternates-Bold.ttf') format('truetype');
   font-weight: 700;
-  font-style: normal;
+  font-style: bold;
 }
+
+/* global site default for font*/
+body {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700; /* Sets Bold (or use 900 for Black) as the site default */
+}
+
+
 
 .container {
     width: 90%;
@@ -307,23 +315,20 @@ a, button, imput{
 
 /* #endregion */
 /*------------------------------------------------------------------------------------------------------------------------*/
-/* ===================================================
-   GLOBAL STYLES & RESETS
-   =================================================== */
 
 /* #region --- about --- */
+/* ---------------------------------SECTION 1 ------------------------------------------------------ */
 
 #about-page {
     background-color: #ffffff; 
 }
 
 body {
-    background-color: #292929;
-    font-family: 'montserrat alternates', Source Sans3, sans-serif;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
-    color: #ffffff;
+    min-height: 100px;
+    color: #333333; /* Fixed: Changed from white to dark gray so text is visible */
 }
 
 .container {
@@ -332,164 +337,212 @@ body {
     padding: 0 20px;
 }
 
-/* ===================================================
-   ANIMATION CONFIGURATIONS (Fixes the stacking issue)
-   =================================================== */
-.fade-in-on-load {
-    opacity: 0;
-    transition: opacity 1s ease-out;
+/* --- Layout Styling --- */
+.about-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  
+  /* 90% width keeps mobile screens from squeezing, while max-width caps desktop */
+  width: 90%; 
+  max-width: 1900px; 
+  min-height: 100vh;
+  margin: 0 auto;
+  
+  /* 
+     Padding Shorthand: TOP | SIDES (Left & Right) | BOTTOM 
+  */
+  padding: clamp(6rem, 20vh, 15rem) clamp(3rem, 15vw, 8rem) 5rem;
 }
-
-.fade-in-on-load.active {
-    opacity: 1;
-}
-
-/* Initial state for your scroll animation elements */
-.reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-/* Fired cleanly by script.js when you scroll to them */
-.reveal-on-scroll.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ===================================================
-   HERO BANNER & OVERLAY TEXT
-   =================================================== */
-.about-images {
-    position: relative;
-    width: 100%;
-    height: 500px; /* Shortened banner height */
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.about-bg-img {
-    width: 100%;
-    height: 100%;     
-    object-fit: cover; 
-    object-position: 50% 80%; /* Adjusted vertical alignment center point */
-    display: block;
-}
-
-.about-overlay-text {
-    position: absolute;
-    bottom: 8%;         
-    left: 5%;              
-    color: #ffffff;         
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
-    z-index: 2;
-}
-
-.about-overlay-text h1 {
-    font-family: 'Montserrat Alternates', sans-serif;
-    font-size: 6rem;   
-    font-weight: 700;    
-    letter-spacing: 1px; 
+.hero-text h1 {
+    /*  clamp (min size, fluid size - how fast it scales - max size)*/
+    font-size: clamp(2rem, 8vw, 10rem); /* Large print */
+    font-weight: 500;
+    letter-spacing: 10px;
     margin: 0;
+    color: #333; /* Adjust to match your color scheme */
 }
 
-/* ===================================================
-   OVERVIEW ROW (Side-by-Side left Aligned)
-   =================================================== */
-.about-split-row {
-    display: grid;
-    grid-template-columns: 1fr; 
-    gap: 30px;
-    align-items: center;
-    margin: 60px 0 40px 0;
-    text-align: center;
+.hero-image img {
+    /* clamp(minimum size, fluid size, maximum size) */
+    width: clamp(350px, 30vw, 550px); 
+    
+    aspect-ratio: 1 / 1.25;
+    object-fit: cover;
+    border-radius: 20%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (min-width: 768px) {
-    .about-split-row {
-        grid-template-columns: 1.2fr 0.8fr; 
-        gap: 60px; 
-        text-align: left; /* Aligns overview type right */
-        align-items: start; /* Aligns text top flush with photo top */
-    }
 
-    .image-column {
-        display: flex;
-        justify-content: flex-end; /* Puts first picture right */
-    }
+
+
+
+
+/* ------------------------------------------------------------------------------------------------- */
+/* ---------------------------------SECTION 2 ------------------------------------------------------ */
+
+
+
+.about-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-width: 1900px;
+  margin: 0 auto;
+ /* Padding Shorthand: TOP | SIDES | BOTTOM */
+  padding: clamp(4rem, 8vh, 8rem) clamp(1.5rem, 2vw, 4rem) 5rem;
+  gap: clamp(1rem, 10vw, 6rem);
 }
 
-.text-column h1 {
-    margin-top: 0; /* Clears hidden browser spacing */
-    margin-bottom: 20px;
-    font-size: 2.5rem;
-    color: #000000;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
-
+.detail-image {
+  flex: 1;  /* Takes ~40% width, can grow or shrink */
+  min-width: 0; /* CRITICAL: Allows Flexbox to shrink image below native size */
+  max-width: 950px;
 }
 
-.text-column p {
-    color: #000000;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
-
+.detail-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 60px; /* Optional: gives a clean rounded corner look */
+  display: block;
 }
 
-.about-5-img {
-    width: 100%;
-    max-width: 650px; /* Increased from 500px to make it significantly larger */
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+.detail-text {
+  flex: 1;  /* Takes ~50% width, can grow or shrink */
+  min-width: 0; /* CRITICAL: Allows text container to shrink without overflowing */
+  max-width: 950px;
+  font-size: clamp(.1rem, 1.5vw, 5rem);
+  text-align: justify;
+  font-weight: 300 ;
 }
 
-.section-divider {
-    border: 0;
-    height: 1px;
-    background: #444444;
-    margin: 60px 0;
+
+
+
+/* ------------------------------------------------------------------------------------------------- */
+/* ---------------------------------SECTION 3 ------------------------------------------------------ */
+
+
+
+
+.photo-collage-section {
+  width: 90%;
+  max-width: 1600px; /* Matches your about-detail section */
+  margin: 0 auto;
+  padding: clamp(4rem, 8vh, 8rem) clamp(1.5rem, 5vw, 4rem);
 }
 
-/* ===================================================
-   6-PHOTO GALLERY GRID (Forced Grid Layout)
-   =================================================== */
-.photo-grid-container {
-    margin-bottom: 80px;
-    width: 100%;
+.photo-collage-section h2 {
+  margin-bottom: 2rem;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 500;
 }
 
-.gallery-title {
-    font-size: 2.2rem;
-    margin-bottom: 30px;
-    text-align: center;
-    color: #ffffff;
-}
-
-/* Main Layout Engine */
+/* THE FOOLPROOF GRID MAP (Desktop) */
 .photo-grid {
-    display: grid !important; 
-    grid-template-columns: repeat(1, 1fr) !important; /* Mobile default stack */
-    gap: 25px !important;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  grid-auto-rows: clamp(200px, 26vh, 300px); 
+  gap: 1.25rem;
+
+  /* 
+     ASCII MAP: Exactly 3 columns x 4 rows = 12 filled slots.
+     - Images 1, 6, 7 span 2 rows (Vertical)
+     - Image 4 spans 2 columns (Horizontal)
+     - Images 2, 3, 5, 8 take single slots
+  */
+  grid-template-areas:
+    "img1 img2 img3"
+    "img1 img4 img4"
+    "img5 img6 img7"
+    "img8 img6 img7";
 }
 
-.grid-item img {
-    width: 100%;
-    height: 250px; 
-    object-fit: cover; 
-    display: block;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+/* LINK EACH IMAGE TO ITS MAP SLOT (NO HTML CLASSES NEEDED!) */
+.photo-grid img:nth-child(1) { grid-area: img1; }
+.photo-grid img:nth-child(2) { grid-area: img2; }
+.photo-grid img:nth-child(3) { grid-area: img3; }
+.photo-grid img:nth-child(4) { grid-area: img4; 
+    object-position: 50% 70%}
+.photo-grid img:nth-child(5) { grid-area: img5; }
+.photo-grid img:nth-child(6) { grid-area: img6; }
+.photo-grid img:nth-child(7) { grid-area: img7; }
+.photo-grid img:nth-child(8) { grid-area: img8; }
+
+/* BASE IMAGE STYLES */
+.photo-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 30px;
+  display: block;
 }
 
-/* Desktop override: Forces elements to snap side-by-side into 2 rows of 3 */
-@media screen and (min-width: 768px) {
-    .photo-grid {
-        grid-template-columns: repeat(3, 1fr) !important; 
+/* TABLET LAYOUT (2 Columns x 6 Rows = Flat Bottom!) */
+@media (max-width: 900px) and (min-width: 601px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "img1 img2"
+      "img1 img3"
+      "img4 img4"
+      "img5 img6"
+      "img7 img6"
+      "img7 img8";
+  }
+}
+
+/* MOBILE LAYOUT (1 Column Stack) */
+@media (max-width: 600px) {
+  .photo-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 280px;
+    grid-template-areas: none; /* Allows natural stacking on phones */
+    gap: 1rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* --------------------------------------------------------------------------------------- */
+/* --- Fade-In Animation --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Starts slightly lower */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Ends in its natural position */
     }
 }
 
+.fade-in {
+    opacity: 0; /* Keeps it hidden before the animation starts */
+    animation: fadeInUp 1s ease-out forwards;
+}
 
+.fade-in-delayed {
+    opacity: 0;
+    /* The '0.4s' adds a slight delay so the image fades in right after the text */
+    animation: fadeInUp 1s ease-out 0.4s forwards; 
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .about-hero {
+        flex-direction: column; /* Stacks the image under the text on small screens */
+        text-align: center;
+        gap: 2rem;
+    }
+}
 /* #endregion */
 /*------------------------------------------------------------------------------------------------------------------------*/
 /* #region --- experience --- */
@@ -619,10 +672,10 @@ body {
     background-color: #412323; 
 }
 
-
 /* #endregion */
+
 /*------------------------------------------------------------------------------------------------------------------------*/
-/* #region --- Scroll reveal --- */
+/* #region --- Scroll reveal & scroll back to top footer--- */
 
 /* --- SCROLL REVEAL BLUEPRINT --- */
 .reveal-on-scroll {
@@ -655,5 +708,45 @@ body {
         visibility: visible;
     }
 }
+
+
+/* ------------------------------------------------------------------------------------------------- */
+/* ---------------------------------BACK TO TOP ------------------------------------------------------ */
+
+/* ==========================================
+   SITE FOOTER & BACK TO TOP (FORCE BOTTOM & CENTER)
+   ========================================= */
+.site-footer {
+  position: relative;
+  z-index: 100; /* Moves the footer above video or blur layers */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+  padding: 3rem 1rem 2.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+}
+.back-to-top-btn {
+  background: transparent;
+  border: none;
+  color: #444;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.back-to-top-btn:hover {
+  color: #000;
+  transform: translateY(-3px);
+}
+
+
 
 /* #endregion */

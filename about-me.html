@@ -15,16 +15,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me | Portfolio</title>
     
-  <!-- 1. Establish connections to Google servers -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:wght@400;500;700&display=swap">
-
-  
-  <!-- 2. The corrected, unified font stylesheet link -->
-  <link href="https://googleapis.com" rel="stylesheet">
+    <!-- link to js and css -->
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
+
+
+
+
+
+
+
+
 
 <body id="about-page">
 
@@ -40,69 +42,83 @@
         </ul>
     </nav>
 
-
-
-    <div class="about-images fade-in-on-load">
-        <img src="media/about1.jpg" alt="main photo" class="about-bg-img">
-        <div class="about-overlay-text">
-            <h1>hello, <br>
-            I'm lily </h1>
+    <section class="about-hero">
+        <div class="hero-text fade-in">
+            <h1>hello, <br> I'm lily</h1>
         </div>
-    </div>  
+        
+        <div class="hero-image fade-in-delayed">
+            <img src="media\about\abmain.jpg" alt="Lily's Headshot">
+        </div>
+    </section> 
 
-    <main class="content">
-        <div class="container">
-            
-            <div class="about-split-row">
-                
-                <div class="text-column reveal-on-scroll">
-                    <h1>overview</h1>
-                    <p>hello, my name is lily peters, I am a current 5th year 
-                        mechanical engineering student ant the University of Cincinnati! throughout my time here at UC I've had the 
-                        opportunity to experience 5 co-op rotations in manufacturing, process engineering, and product design. <br><br>
-                        outside of school and work I have an amazing family and a loyal pup. I enjoy working on my car/motorcycle, tinkering,
-                        and I am a deep lover of the outdoors.
-                        basically if it's in nature I am there!<br><br>
-                        I'm so glad you're here and I hope you enjoy. please feel free to contact me with any questions you might have
-                        about my projects or background!.</p>
-                </div>
-                
-                <div class="image-column reveal-on-scroll">
-                    <img src="media/about5.jpg" alt="About Me Photo" class="about-5-img">
-                </div>
-                
-            </div> <hr class="section-divider">
 
-            <div class="photo-grid-container">
 
-                
-                <div class="photo-grid">
-                    <div class="grid-item reveal-on-scroll">
-                        <img src="media/about2.jpg" alt="Event setup detail">
-                    </div>
-                    <div class="grid-item reveal-on-scroll">
-                        <img src="media/about3.jpg" alt="Operations coordination">
-                    </div>
-                    <div class="grid-item reveal-on-scroll">
-                        <img src="media/about4.jpg" alt="Large-scale event overview">
-                    </div>
-                    <div class="grid-item reveal-on-scroll">
-                        <img src="media/about6.jpg" alt="Behind the scenes operations">
-                    </div>
-                    <div class="grid-item reveal-on-scroll">
-                        <img src="media/about7.jpg" alt="Team coordination management">
-                    </div>
-                    <div class="grid-item reveal-on-scroll">
-                        <img src="media/about8.jpg" alt="Golf event execution landscape">
-                    </div>
-                </div>
-            </div> </div> </main>
+<!------------------------------------- SECTION 2 ------------------------------------------------------------------------->
+<!------------------------------------------------------------------------------------------------------------------------>
 
-    <script src="script.js"></script>
+
+
+<section class="about-detail">
+  <div class="detail-image">
+    <img src="media\about\ab1.jpg" alt="Lily working on a project">
+  </div>
+  <div class="detail-text">
+    <!-- h2>A Little More About Me</h2 -->
+    <p>I'm an engineer in training with a wild imagination and two hands to make it happen. <br><br>
+    In spring of 2027 I will graduate from the University of Cincinnti with a B.S. in 
+    Mechanical Engineering <br><br>
+    Outside of school and work I have a deep love for my family, friends, the outdoors, and my
+    pup, Remmi! <br><br>
+    My mom always says "where there's a will, there's a way" and I believe she's right.
+    With enough effort we can create amazing things, so why not? </p>
+  </div>
+</section>
+
+
+
+<!------------------------------------- SECTION 3 ------------------------------------------------------------------------->
+<!------------------------------------------------------------------------------------------------------------------------>
+
+<div class="photo-grid-container">
+
+
+<!-- Photo Puzzle Gallery -->
+<section class="photo-collage-section">
+  <h2>Life & Highlights</h2>
+  
+  <div class="photo-grid">
+    <img src="media\about\ab2.jpg" alt="Gallery Photo 1" class="img-tall"> <!-- VERTICAL 1 -->
+    <img src="media\about\ab3.jpg" alt="Gallery Photo 2">
+    <img src="media\about\ab4.jpg" alt="Gallery Photo 3">
+    <img src="media\about\ab5.jpg" alt="Gallery Photo 4" class="img-wide"> <!-- WIDE -->
+    <img src="media\about\ab6.jpg" alt="Gallery Photo 5">
+    <img src="media\about\ab7.jpg" alt="Gallery Photo 6" class="img-tall"> <!-- VERTICAL 2 -->
+    <img src="media\about\ab8.png" alt="Gallery Photo 7" class="img-tall"> <!-- VERTICAL 3 -->
+    <img src="media\about\ab9.jpg" alt="Gallery Photo 8">
+  </div>
+</section>
+
+
+
+<!------------------------------------- BACK TO TOP ------------------------------------------------------------------------->
+<!------------------------------------------------------------------------------------------------------------------------>
+
+
+
+
+<!-- ALL YOUR PAGE CONTENT / PHOTO GRIDS END HERE -->
+  
+  <!-- FOOTER GOES HERE AT THE VERY BOTTOM -->
+<footer class="site-footer">
+  <button class="back-to-top-btn" id="backToTop">
+    Back to Top &uarr;
+  </button>
+</footer>
 
 </body>
-</html>
-
+ </html>
+                  
 
 
 
