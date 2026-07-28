@@ -5,21 +5,23 @@
 -->
 
 
-<!-- bringing in font style -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experience | Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>About Me | Portfolio</title>
+    
+    <!-- link to js and css -->
     <link rel="stylesheet" href="styles.css">
-
-
+    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </head>
-<body id="experience-page">
+
+
+
+
+<body id="about-page">
 
     <nav class="floating-menu" id="navbar">
         <div class="logo"><a href="index.html">lp</a></div>
@@ -32,63 +34,255 @@
             <li><a href="media/LP_Resume_07202026.pdf" download="LP_Resume_07202026.pdf">resume</a></li>
         </ul>
     </nav>
-<!-- 1. Normal Vertical Overview Section -->
-<section class="experience-overview">
-    <div class="container">
-        <h1>Professional Journey</h1>
-        <p>A timeline of my co-op rotations and engineering experience across manufacturing, process design, and product engineering.</p>
-        <span class="scroll-arrow">↓ Scroll to explore</span>
-    </div>
+
+
+<!---------------------------------------------- SECTION 1 HEADER ---------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------------->
+
+
+<section class="experience-header fade-in-load">
+    <h1>experience</h1>
 </section>
 
-<!-- 2. The Horizontal Scroll Track Container -->
-<div class="timeline-scroll-track">
-    <!-- The Sticky Container that locks the viewport -->
-    <div class="timeline-sticky-window">
+
+<!---------------------------------------- SECTION 2 OVERVIEW AND COMPANY ---------------------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------------------------------------------------------------------->
+
+<!-- Section 2: 60/40 Content Layout -->
+<section class="experience-content reveal-on-scroll">
+    
+    <!-- Left Column (60%) -->
+    <div class="left-col">
+        <div class="overview-text">
+            <p>Through the University of Cincinnati, engineering students are required to complete <strong>five</strong> cooperative education semesters.</p>
+            <br>
+            <p>Every semester is spent learning and working for companies covering all aspects of the engineering field.</p>
+            <br>
+            <p>Each co-op experience has provided me with the opportunity to build and develop skills with a number of tools used throughout the industry.</p>
+            <br><br>
+            <p> Companies I've worked for:</p>
+        </div>
         
-        <!-- The Actual Timeline Content Wrapper that slides left -->
-        <div class="timeline-horizontal-content">
-            
-            <!-- Timeline Item 1 -->
-            <div class="timeline-card">
-                <span class="item-date">Co-op Rotation 1</span>
-                <h3>Manufacturing Engineer</h3>
-                <p>Managed cross-functional floor projects across 5 internal departments to optimize assembly cycles.</p>
+        <!-- 4 Equally Spaced Square Pictures -->
+        <div class="company-squares reveal-on-scroll">
+
+            <!-- schneider square -->
+            <div class="company-card reveal-on-scroll"> 
+                <span class="hover-tab">Schneider Electric</span>
+                <img src="media/experience/schneider.jpg" alt="schneider" class="square-pic">
             </div>
 
-            <!-- Timeline Item 2 -->
-            <div class="timeline-card">
-                <span class="item-date">Co-op Rotation 2</span>
-                <h3>Process Engineer</h3>
-                <p>Designed spatial layouts and implemented mechanical standard operating guidelines.</p>
+            <!-- bilstein square -->
+            <div class="company-card reveal-on-scroll"> 
+                <span class="hover-tab">Thyssen Krupp Bilstein</span>
+                <img src="media/experience/bilstein.jpg" alt="bilstein" class="square-pic">
             </div>
 
-            <!-- Timeline Item 3 -->
-            <div class="timeline-card">
-                <span class="item-date">Co-op Rotation 3</span>
-                <h3>Product Design</h3>
-                <p>Developed dynamic 3D assemblies and failure analysis routines using finite element testing.</p>
+            <!-- rhinestahl square -->
+            <div class="company-card reveal-on-scroll"> 
+                <span class="hover-tab">RH Aero</span>
+                <img src="media/experience/rhinestahl.jpg" alt="rhinestahl" class="square-pic">
             </div>
 
-            <!-- Timeline Item 4 -->
-            <div class="timeline-card">
-                <span class="item-date">Co-op Rotation 4</span>
-                <h3>Advanced Operations</h3>
-                <p>Coordinated multi-department operations and large-scale event logistics tracking metrics.</p>
+            <!-- nvoa square -->
+            <div class="company-card reveal-on-scroll"> 
+                <span class="hover-tab">Nova Design</span>
+                <img src="media/experience/nova.jpg" alt="nova" class="square-pic">
             </div>
 
         </div>
-    </div>
-</div>
 
-<!-- A normal footer section or spacer below the timeline track -->
-<section class="experience-footer">
-    <p>Let's build something together.</p>
+        <a href="media/LP_Resume_07202026.pdf" download="LP_Resume_07202026.pdf" class="resume-download-btn reveal-on-scroll">download resume</a>
+    </div>
+
+
+
+<!------------------------------------- SECTION 3 TOOL STACK UP ------------------------------------------------------------->
+<!--------------------------------------------------------------------------------------------------------------------------->
+    
+    <!-- Right Column (40%) -->
+    <div class="right-col">
+        
+
+        <!-- Small Section Heading -->
+        <h3 class="section-stack-title reveal-on-scroll">tool stack up</h3>
+
+        <div class="skills-section-right">
+
+            <!-- Category Box 1: design -->
+            <div class="category-box reveal-on-scroll">
+                <h3 class="category-title">ui design, sketching</h3>
+                <div class="category-grid">
+                
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">illustrator</span>
+                        <img src="media/experience/ai.png" alt="illustrator" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">figma</span>
+                        <img src="media/experience/figma.png" alt="figma" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">procreate</span>
+                        <img src="media/experience/procreate.jpg" alt="procreate" class="square-pic">
+                    </div>
+
+                </div> <!-- Properly closed category-grid -->
+            </div> <!-- Properly closed category-box -->
+
+
+
+            <!-- Category Box 2: CAD -->
+            <div class="category-box reveal-on-scroll">
+                <h3 class="category-title">CAD modeling, rendering</h3>
+                <div class="category-grid">
+                    
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">solidworks</span>
+                        <img src="media/experience/solidworks.jpg" alt="solidworks" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">nx</span>
+                        <img src="media/experience/nx.png" alt="nx" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">autocad</span>
+                        <img src="media/experience/autocad.png" alt="autocad" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">inventor</span>
+                        <img src="media/experience/inventor.png" alt="inventor" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">keyshot</span>
+                        <img src="media/experience/keyshot.jpg" alt="keyshot" class="square-pic">
+                    </div>
+
+                </div> <!-- Properly closed category-grid -->
+            </div> <!-- Properly closed category-box -->
+
+
+
+            <!-- Category Box 3: fabrication  -->
+            <div class="category-box reveal-on-scroll">
+                <h3 class="category-title">fabrication, simulation</h3>
+                <div class="category-grid">
+                    
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">creality</span>
+                        <img src="media/experience/creality.jpg" alt="solidworks" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">raised 3d</span>
+                        <img src="media/experience/raised3d.png" alt="nx" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">bambu lab</span>
+                        <img src="media/experience/bambu.png" alt="autocad" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">star ccm</span>
+                        <img src="media/experience/starccm.jpg" alt="inventor" class="square-pic">
+                    </div>
+
+                </div> <!-- Properly closed category-grid -->
+            </div> <!-- Properly closed category-box -->
+
+
+
+            <!-- Category Box 4: technical  -->
+            <div class="category-box reveal-on-scroll">
+                <h3 class="category-title">technical </h3>
+                <div class="category-grid">
+                    
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">arduino</span>
+                        <img src="media/experience/arduino.jpg" alt="solidworks" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">labview</span>
+                        <img src="media/experience/labview.png" alt="nx" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">microsoft 365</span>
+                        <img src="media/experience/m365.jpg" alt="autocad" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">matlab</span>
+                        <img src="media/experience/matlab.jpg" alt="inventor" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">visual basic</span>
+                        <img src="media/experience/visualbasic.png" alt="inventor" class="square-pic">
+                    </div>
+
+                </div> <!-- Properly closed category-grid -->
+            </div> <!-- Properly closed category-box -->
+
+
+
+            <!-- Category Box 4: motion, video, photo editng  -->
+            <div class="category-box reveal-on-scroll">
+                <h3 class="category-title">motion, video, photo editing </h3>
+                <div class="category-grid">
+                    
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">photoshop</span>
+                        <img src="media/experience/photoshop.png" alt="solidworks" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">premiere pro</span>
+                        <img src="media/experience/premierepro.png" alt="nx" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">davinvi resolve</span>
+                        <img src="media/experience/davinci.jpg" alt="autocad" class="square-pic">
+                    </div>
+
+                    <div class="company-card reveal-on-scroll">
+                        <span class="hover-tab">lightroom</span>
+                        <img src="media/experience/lightroom.png" alt="inventor" class="square-pic">
+                    </div>
+
+                </div> <!-- Properly closed category-grid -->
+            </div> <!-- Properly closed category-box -->
+
+        </div>
+    </div>
+    
 </section>
 
-<script src="script.js"></script>
 
+
+
+
+
+
+<!------------------------------------- BACK TO TOP ------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------------------------------------------------->
+
+  <!-- FOOTER GOES HERE AT THE VERY BOTTOM -->
+<footer class="site-footer">
+  <button class="back-to-top-btn" id="backToTop">
+    Back to Top &uarr;
+  </button>
+</footer>
 
 </body>
-</html>
-
+ </html>
+               

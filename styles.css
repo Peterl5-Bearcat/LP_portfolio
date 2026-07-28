@@ -59,7 +59,7 @@ body {
 body {
     font-family: 'Montserrat Alternates', sans-serif !important;
     background-color: #292929;
-    height: 1000px; /* Gives your window plenty of track depth to register mouse scrolls */
+    height: 1500px; /* Gives your window plenty of track depth to register mouse scrolls */
 }
 a, button, imput{
     font-family: 'Montserrat Alternates', sans-serif;
@@ -91,6 +91,7 @@ a, button, imput{
 
 .logo {
     list-style: none;
+    font-size: clamp(1rem, 2.5vw, 1.75rem);
     display: flex;
     gap: 15px;
     align-items: center;
@@ -99,7 +100,7 @@ a, button, imput{
 .logo a {
     text-decoration: none;
     color: #000000;
-    font-weight: 500;
+    font-weight: 600;
     transition: color 0.2s;
 }
 
@@ -315,7 +316,6 @@ a, button, imput{
 
 /* #endregion */
 /*------------------------------------------------------------------------------------------------------------------------*/
-
 /* #region --- about --- */
 /* ---------------------------------SECTION 1 ------------------------------------------------------ */
 
@@ -461,10 +461,11 @@ body {
 
 /* LINK EACH IMAGE TO ITS MAP SLOT (NO HTML CLASSES NEEDED!) */
 .photo-grid img:nth-child(1) { grid-area: img1; }
-.photo-grid img:nth-child(2) { grid-area: img2; }
+.photo-grid img:nth-child(2) { grid-area: img2; 
+    object-position: 50% 90%}
 .photo-grid img:nth-child(3) { grid-area: img3; }
 .photo-grid img:nth-child(4) { grid-area: img4; 
-    object-position: 50% 70%}
+    object-position: 50% 65%}
 .photo-grid img:nth-child(5) { grid-area: img5; }
 .photo-grid img:nth-child(6) { grid-area: img6; }
 .photo-grid img:nth-child(7) { grid-area: img7; }
@@ -547,122 +548,244 @@ body {
 /*------------------------------------------------------------------------------------------------------------------------*/
 /* #region --- experience --- */
 
-
-
 #experience-page {
     background-color: #ffffff; 
 }
-/* ===================================================
-   EXPERIENCE PAGE MATCHED HORIZONTAL TIMELINE
-   =================================================== */
 
-/* Normal vertical intro block */
-.experience-overview {
-    height: 80vh;
+/* ------------------------------------ SECTION 1 HEADER --------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+/* Section 1 Container */
+.experience-header {
+  display: flex;
+  align-items: flex-start;
+  /* 90% width keeps mobile screens from squeezing, while max-width caps desktop */
+  width: 90%; 
+  max-width: 1900px; 
+  margin: 0 auto;
+  
+  /* Padding Shorthand: TOP | SIDES (Left & Right) | BOTTOM */
+  padding: clamp(2rem, 30vh, 15rem) clamp(1rem, 1vw, 5rem) 1rem;
+}
+
+/* Adaptive Heading */
+.experience-header h1 {
+    /* clamp(minimum, preferred, maximum) */
+    font-size: clamp(2rem, 8vw, 10rem); 
+    font-weight: 500;
+    letter-spacing: 0px;
+    color: #111;
+}
+
+
+
+/* ------------------------------------ SECTION 2 OVERVIEW --------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+
+/* Main Layout Grid (60/40 Split) */
+.experience-content {
+    display: grid;
+    grid-template-columns: 6fr 4fr; /* 6 parts left, 4 parts right */
+    gap: 4rem; /* Spacing between the columns */
+    text-align: justify;
+    
+    /* Matching the width and padding of your header */
+    width: 90%;
+    max-width: 1900px;
+    margin: -3rem auto 0 auto;
+    padding: clamp(4rem, 25vh, 8rem) clamp(1rem, 1vw, 5rem) 5rem;
+}
+
+/* left column a flex container so child items can be centered */
+.left-col {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px;
+    align-items: center; /* Centers the button horizontally */
 }
 
-.experience-overview h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-}
-
-.scroll-arrow {
-    margin-top: 30px;
-    font-size: 0.9rem;
-    color: #0077ff;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.timeline-scroll-track {
-    position: relative;
-    height: 300vh; /* This dictates the length of your scroll track depth */
-    width: 100%;
-    background: transparent;
-    z-index: 100;
-}
-
-.timeline-sticky-window {
-    position: absolute; /* Handled dynamically by JS now */
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-}
-
-.timeline-horizontal-content {
-    display: flex;
-    gap: 50px;
-    padding: 0 10%;
-    will-change: transform;
-    /* Remove the var(--scroll-offset) link, we are using direct transform now */
-}
-
-/* Individual Card Blocks */
-.timeline-card {
-    flex-shrink: 0;
-    width: 350px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 40px 30px;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    position: relative;
-}
-
-/* Connecting bar line layout */
-.timeline-card::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -51px;
-    width: 50px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.timeline-card:last-child::before {
-    display: none;
-}
-
-.item-date {
-    display: inline-block;
-    font-size: 0.85rem;
-    color: #0077ff;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
-
-.timeline-card h3 {
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-    color: #ffffff;
-}
-
-.timeline-card p {
-    color: #cccccc;
+/* Left Column - Overview Text */
+.overview-text p {
+    font-size: clamp(.5rem, 1.5vw, 5rem); 
     line-height: 1.6;
-    font-size: 1rem;
+    font-weight: 400;
+    max-width: 90%; /* Keeps text from touching the right column */
 }
 
-/* Spacing to let users scroll past the timeline naturally */
-.experience-footer {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Left Column - 4 Square Pictures Layout */
+.company-squares {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Creates 4 equally sized columns */
+    gap: 1.5rem; /* Space between the squares */
+    margin-top: 3.5rem;
+    width: 90%; 
 }
+
+/*----------------------- resume download ------------------------------*/
+.resume-download-btn {
+    display: inline-block;
+    background-color: #e1a006;
+    color: #0b0b0b;
+    align-items: center;
+    font-size: clamp(0.9rem , 2vw, 5rem);
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+    margin-top: clamp(1rem, 15vw, 8rem);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.resume-download-btn:hover {
+    background-color: #007aff; /* Matches your blue glow accent! */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 122, 255, 0.3);
+}
+
+/* ------------------------------------ SECTION 3 TOOL STACK --------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------------------------------- */
+
+
+/* Container holding all your category boxes in the right column */
+.skills-section-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+/* The Colored Category Box */
+.category-box {
+    background-color: #dfdede; /* Soft background color for the box */
+    border: 1px solid #eaeaea;
+    border-radius: 1.5rem;
+    padding: 1rem 1.25rem;  
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.section-stack-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+    text-align: center;
+}
+
+/* Title inside the colored box */
+.category-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(65px, 1fr)); /* Automatically packs logos in a row */
+    gap: 0.75rem;
+}
+
+
+
+
+
+/* -------------------------------------- animation: hover tab pop up-------------------------------------------------------------- */
+
+/* Container for individual card so the tab stays anchored */
+.company-card {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.square-pic {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 1rem;
+    object-fit: cover;
+    background-color: #fff;
+    border: 1px solid #eee;
+    
+    /* Smooth transition for size, shadow, and border color */
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.company-card:hover .square-pic {
+    transform: scale(1.04); /* Makes the square grow slightly */
+    box-shadow: 0 15px 35px rgba(6, 94, 188, 0.55); /* Soft blue glow */
+    border-color: rgba(5, 51, 101, 0.4); /* Blue-tinted border */
+}
+
+
+/* The Popup Tab */
+.hover-tab {
+    position: absolute;
+    top: 0; /* Pins it directly to the top edge of the card */
+    left: 50%;
+    transform: translate(-50%, 0px); /* Starts centered right at the top edge */
+    background-color: #111; 
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    border-radius: 2rem; 
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 20;
+    pointer-events: none; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover Effect: Pops up and fades in */
+.company-card:hover .hover-tab {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -42px); /* Moves it up 42px right above the image */
+}
+
+
+
+
+/* Mobile Adaptability */
+@media (max-width: 1024px) {
+    .experience-content {
+        grid-template-columns: 1fr; /* Stacks the columns on top of each other on smaller screens */
+        gap: 3rem;
+    }
+    
+    .company-squares {
+        width: 100%; 
+    }
+}
+
+
+/* Fade-In On Load Animation */
+.fade-in-load {
+    opacity: 0; /* Starts invisible */
+    animation: fadeIn 1.2s ease-out forwards; /* Runs the animation */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15px); /* Starts slightly lower for a gentle lift effect */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Settles into its final position */
+    }
+}
+
+
+
 
 /* #endregion */
 /*------------------------------------------------------------------------------------------------------------------------*/
@@ -673,24 +796,34 @@ body {
 }
 
 /* #endregion */
-
 /*------------------------------------------------------------------------------------------------------------------------*/
-/* #region --- Scroll reveal & scroll back to top footer--- */
+/* #region --- ANIMATION BLUEPRINTS  --- */
+/* ---------------------- REVEAL ON SCROLL -------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------- */
 
-/* --- SCROLL REVEAL BLUEPRINT --- */
+
 .reveal-on-scroll {
     opacity: 0;
-    transform: translateY(40px); 
+    transform: translateY(30px); /* Starts slightly lower */
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    will-change: opacity, transform; 
+    will-change: opacity, transform;
 }
 
+/* Active state triggered when scrolled into view 
+   (Note: Check if your JS adds 'active', 'visible', or something else!) */
 .reveal-on-scroll.active {
     opacity: 1;
-    transform: translateY(0); 
+    transform: translateY(0);
 }
 
-/* --- IMMEDIATE LOAD ENTRANCE BLUEPRINT --- */
+
+
+
+
+/* ---------------------- FADE IN ON LOAD -------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------- */
+
+
 .fade-in-on-load {
     animation: loadSlideUp 1.2s ease-out forwards;
     visibility: hidden;
@@ -710,12 +843,12 @@ body {
 }
 
 
+
+
+
 /* ------------------------------------------------------------------------------------------------- */
 /* ---------------------------------BACK TO TOP ------------------------------------------------------ */
 
-/* ==========================================
-   SITE FOOTER & BACK TO TOP (FORCE BOTTOM & CENTER)
-   ========================================= */
 .site-footer {
   position: relative;
   z-index: 100; /* Moves the footer above video or blur layers */

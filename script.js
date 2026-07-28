@@ -31,6 +31,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+// ===============================================================================================
+// FADE IN ON SCROLL
+// ===============================================================================================
+
+
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1 // Triggers when 10% of the element is visible
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active'); // Adds the active class to trigger the CSS transition
+            // observer.unobserve(entry.target); // Uncomment if you only want it to animate once
+        }
+    });
+}, observerOptions);
+
+// Target all elements with the reveal class
+document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+    observer.observe(el);
+});
+
+
+
+
+
+
+
 // ===============================================================================================
 // BACK TO TOP BUTTON
 // ===============================================================================================
