@@ -48,7 +48,7 @@ const observer = new IntersectionObserver((entries, observer) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('active'); // Adds the active class to trigger the CSS transition
             // observer.unobserve(entry.target); // Uncomment if you only want it to animate once
-        }
+        } 
     });
 }, observerOptions);
 

@@ -37,10 +37,8 @@ Date Updated: June 14, 2026
 /* global site default for font*/
 body {
   font-family: 'Montserrat Alternates', sans-serif;
-  font-weight: 700; /* Sets Bold (or use 900 for Black) as the site default */
+  font-weight: 700;
 }
-
-
 
 .container {
     width: 90%;
@@ -59,9 +57,9 @@ body {
 body {
     font-family: 'Montserrat Alternates', sans-serif !important;
     background-color: #292929;
-    height: 1500px; /* Gives your window plenty of track depth to register mouse scrolls */
+    height: 1500px; /* Gives your window track depth to register scrolls */
 }
-a, button, imput{
+a, button, input {
     font-family: 'Montserrat Alternates', sans-serif;
 }
 
@@ -71,8 +69,8 @@ a, button, imput{
   top: 20px; 
   left: 50%; 
   transform: translateX(-50%); 
-  background-color: rgba(255, 255, 255, 0.75); /* Semi-transparent white background */ 
-  backdrop-filter: blur(10px); /* Frosted glass effect */ 
+  background-color: rgba(255, 255, 255, 0.75); 
+  backdrop-filter: blur(10px); 
   -webkit-backdrop-filter: blur(10px); 
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
   z-index: 1000; 
@@ -81,12 +79,12 @@ a, button, imput{
   justify-content: space-between; 
   align-items: center; 
   height: 60px; 
-  padding: 0 30px; /* Slightly bumped up for large displays */ 
+  padding: 0 30px; 
   border: 1px solid #ddd; 
-  border-radius: 50px; /* pillbox effect*/ 
-  box-sizing: border-box; /* Keeps padding inside the calculation */ 
-  width: 95%; /* Spans 95% of any screen size */ 
-  max-width: 95%; /* Removes the 1100px desktop ceiling limit */ 
+  border-radius: 50px; 
+  box-sizing: border-box; 
+  width: 95%; 
+  max-width: 95%; 
 } 
 
 .logo {
@@ -162,11 +160,7 @@ a, button, imput{
     }
 }
 
-/* CSS for video placeholder box */
-
-
-/*position of quote in video window*/
-/* Position and transition for quote section */
+/* Position and transition for quote section / video container */
 .text-over-video { 
     position: fixed;
     top: 0;
@@ -174,10 +168,10 @@ a, button, imput{
     width: 100vw; 
     height: 100vh; 
     background-color: rgba(19, 16, 16, 0.1); 
-    z-index: 20; /* Sits at the same layer as overview before scroll */
+    z-index: 10; 
     opacity: 1; 
     pointer-events: auto; 
-    transition: opacity 0.8s ease; /* Smoothly fades out when hidden */
+    transition: opacity 0.8s ease;
 }
 
 /* Quote centering box */
@@ -185,17 +179,16 @@ a, button, imput{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Locks quote in dead center of the screen */
+    transform: translate(-50%, -50%); 
     width: 90%; 
     max-width: 750px; 
     text-align: center;
     padding: 20px;
     margin: 0;
-    
 }
 
 .quote h2 { 
-    font-family: 'Roboto',  sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 2.2rem;
     letter-spacing: 0.08em;
     margin-bottom: 20px;
@@ -216,6 +209,43 @@ a, button, imput{
     pointer-events: none !important;
 }
 
+/* Background Video Styling */
+.bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps it filling the screen nicely */
+    z-index: -1;
+    opacity: 0;
+    animation: videoFadeIn 1.2s ease forwards;
+}
+
+@keyframes videoFadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Darkens the video slightly so the white quote text pops */
+.text-over-video::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: 0;
+}
+
+/* Make sure your quote text stays above the dark overlay */
+.text-over-video .quote {
+    z-index: 1;
+}
+
 /* --- Overview & Blur Transition Styling --- */
 .blur-overlay {
     position: fixed;
@@ -226,12 +256,13 @@ a, button, imput{
     background-color: rgba(0, 0, 0, 0.5); 
     backdrop-filter: blur(15px);           
     -webkit-backdrop-filter: blur(15px);   
-    z-index: 5;                            
+    z-index: 15; /* Sits above video and text-over-video */
     opacity: 0;                            
     pointer-events: none;                  
     transition: opacity 0.8s ease;
 }
 
+/* Restores your original fixed-screen fade-in behavior */
 .overview-section {
     position: fixed;
     top: 0;
@@ -239,7 +270,7 @@ a, button, imput{
     width: 100vw;                        
     height: 100vh;         
     background-color: rgba(19, 16, 16, 0.1); 
-    z-index: 10;                         
+    z-index: 20; /* Sits on top of the blur overlay to display your overview text clearly */
     display: flex;
     flex-direction: column;              
     justify-content: center;             
@@ -593,7 +624,7 @@ body {
     width: 90%;
     max-width: 1900px;
     margin: -3rem auto 0 auto;
-    padding: clamp(4rem, 25vh, 8rem) clamp(1rem, 1vw, 5rem) 5rem;
+    padding: clamp(4rem, 30vh, 8rem) clamp(1rem, 1vw, 5rem) 5rem;
 }
 
 /* left column a flex container so child items can be centered */
@@ -646,7 +677,31 @@ body {
 /* ----------------------------------------------------------------------------------------------------------------------------- */
 
 
-/* Container holding all your category boxes in the right column */
+
+
+/* 1. COLUMN LAYOUT FIX */
+.right-col {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    /* These two lines fix the title and the missing boxes */
+    justify-content: flex-start; /* Keeps the title at the top */
+    align-items: stretch; /* Forces your category boxes to span the full width */
+}
+
+/* 2. MAIN SECTION TITLE */
+.section-stack-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.5rem; /* Space between title and first box */
+    letter-spacing: -0.01em;
+    text-align: center; /* Aligns the title nicely with the left edge of the boxes */
+    width: 100%;
+}
+
+/* 3. BOX CONTAINER */
 .skills-section-right {
     display: flex;
     flex-direction: column;
@@ -654,40 +709,198 @@ body {
     width: 100%;
 }
 
-/* The Colored Category Box */
+/* 4. THE GRAY CATEGORY BOXES (Restored) */
 .category-box {
-    background-color: #dfdede; /* Soft background color for the box */
+    background-color: #dfdede; 
     border: 1px solid #eaeaea;
     border-radius: 1.5rem;
-    padding: 1rem 1.25rem;  
+    padding: 1.5rem;  
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    
+    /* Keeps padding inside the box so it doesn't push right */
+    box-sizing: border-box; 
+    width: 100%; 
 }
 
-.section-stack-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 1rem;
-    letter-spacing: -0.01em;
-    text-align: center;
-}
-
-/* Title inside the colored box */
 .category-title {
     font-size: 1rem;
     font-weight: 600;
+    text-align: left;
     color: #333;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
     letter-spacing: -0.01em;
+}
+
+/* 5. FLEX GRID FOR LOGOS */
+.category-grid {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
 }
 
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(65px, 1fr)); /* Automatically packs logos in a row */
-    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); /* Automatically packs logos in a row */
+    gap: 1em;
 }
 
+/* ------------------------------------ SECTION 4 TIMELINE --------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------------------------------- */
 
+
+.timeline-section {
+    width: 90%;
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 40px 20px;
+}
+
+.timeline-title {
+    text-align: center;
+    font-size: clamp(2.2rem, 10vh, 8rem);
+    color: #060606;
+    margin-bottom: 60px;
+}
+
+.timeline-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Central Vertical Line */
+.timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background-color: #0077ff;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Timeline Item Base */
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+/* University Center Marker at the top */
+.timeline-item.center-start {
+    width: 100%;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 40px;
+}
+
+.timeline-item.center-start .timeline-content {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: inline-block;
+    padding: 20px 40px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+/* Left vs Right Alternating Layout */
+.timeline-item.left {
+    left: 0;
+    text-align: center;
+}
+
+.timeline-item.right {
+    left: 50%;
+    text-align: center;
+}
+
+/* Content Box Styling */
+.timeline-content {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 25px;
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    border-color: #0077ff;
+}
+
+/* Typography Inside Timeline */
+.timeline-date {
+    display: block;
+    font-size: 0.85rem;
+    color: #0077ff;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.timeline-content h3 {
+    font-size: 1.3rem;
+    color: #0c0a0a;
+    margin-bottom: 8px;
+}
+
+.timeline-content p {
+    font-size: 1rem;
+    color: #cccccc;
+    margin: 0;
+}
+
+/* Timeline Dots on the Center Line */
+.timeline-item.left::after,
+.timeline-item.right::after {
+    content: '';
+    position: absolute;
+    top: 35px;
+    width: 16px;
+    height: 16px;
+    background-color: #ffffff;
+    border: 3px solid #0077ff;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.timeline-item.left::after {
+    right: -8px;
+}
+
+.timeline-item.right::after {
+    left: -8px;
+}
+
+/* Responsive Design for Mobile / Small Screens */
+@media screen and (max-width: 768px) {
+    .timeline-line {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 0;
+        text-align: left !important;
+    }
+
+    .timeline-item.right {
+        left: 0;
+    }
+
+    .timeline-item.left::after,
+    .timeline-item.right::after {
+        left: 12px;
+        right: auto;
+    }
+}
 
 
 
@@ -792,8 +1005,137 @@ body {
 /* #region --- connect --- */
 
 #connect-page {
-    background-color: #412323; 
+    background-color: #ffffff; 
 }
+
+.contact-header{
+    display: flex;
+    align-items: flex-start;
+    width: 90%;
+    max-width: 1900px;
+    margin: 0 auto;
+
+    padding: clamp(2rem, 30vh, 15rem) clamp(1rem, 4vw, 5rem) 1rem;
+}
+
+.contact-header h1{
+    font-size: clamp(2rem, 8vw, 10rem);
+    font-weight: 500;
+    letter-spacing: 0px;
+    color: #000;
+}
+
+
+
+
+
+/* ------------------------------------ SECTION 2 ICONS & IMAGE --------------------------------------------------------------------- */
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 6fr 4fr; 
+    gap: 4rem;
+    align-items: center;
+    
+    width: 90%;
+    max-width: 1900px;
+    margin: -3rem auto 0 auto;
+    
+    /* Matches the exact left/right padding of your contact-header so they align perfectly */
+    padding: clamp(4rem, 25vh, 8rem) clamp(1rem, 1vw, 5rem);
+}
+
+.left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; 
+    align-items: flex-start; /* Forces the column contents strictly to the left */
+}
+
+/* Row alignment */
+.contact-logo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; 
+}
+
+/* ------------------------------------ HOVER PILL TOOLTIP --------------------------------------------------------------------- */
+
+.icon-wrapper {
+    position: relative; /* Anchors the absolute positioned hover-tab to this icon */
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* The Pill Box */
+.hover-tab1 {
+    position: absolute;
+    bottom: 150%; /* Places it above the icon */
+    background-color: #0077ff; /* The blue hue */
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 20px; /* Makes it a pill shape */
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0px 4px 10px rgba(0, 119, 255, 0.4);
+    
+    /* Hidden by default, slides up on hover */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    pointer-events: none; /* Stops the pill itself from interfering with mouse hovering */
+}
+
+/* Shows the pill when hovering over the icon wrapper */
+.icon-wrapper:hover .hover-tab {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%, 0);
+}
+
+/* ------------------------------------ ICONS & TEXT --------------------------------------------------------------------- */
+
+/* Logo Image Styling */
+.square-pic {
+    width: clamp(1rem, 15vh, 8rem);;
+    object-fit: cover;
+    border-radius: 15%px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* Icon Blue Shadow & Expand */
+.square-pic:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 20px rgba(0, 119, 255, 0.4);
+}
+
+/* The Address Text */
+.contact-address {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 400;
+}
+
+/* ------------------------------------ RIGHT IMAGE --------------------------------------------------------------------- */
+
+.right-col {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feature-image {
+    width:clamp(1rem, 100vh, 13rem);
+    height: auto;
+    object-fit: cover; 
+    border-radius: 12px; 
+
+}
+
 
 /* #endregion */
 /*------------------------------------------------------------------------------------------------------------------------*/
