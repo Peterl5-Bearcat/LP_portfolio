@@ -345,6 +345,97 @@ a, button, input {
     background-color: #ffffff; 
 }
 
+/* ------------------------------------ SECTION 1 HEADER --------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+/* Section 1 Container */
+.projects-header {
+  display: flex;
+  align-items: flex-start;
+  /* 90% width keeps mobile screens from squeezing, while max-width caps desktop */
+  width: 90%; 
+  max-width: 1900px; 
+  margin: 0 auto;
+  
+  /* Padding Shorthand: TOP | SIDES (Left & Right) | BOTTOM */
+  padding: clamp(2rem, 30vh, 15rem) clamp(1rem, 1vw, 5rem) 4rem;
+}
+
+/* Adaptive Heading */
+.projects-header h1 {
+    /* clamp(minimum, preferred, maximum) */
+    font-size: clamp(2rem, 8vw, 10rem); 
+    font-weight: 500;
+    letter-spacing: 0px;
+    color: #111;
+}
+
+
+/* ------------------------------------ SECTION 2 PROJECTS --------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+
+/* Container for all projects */
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* space between project boxes */
+  width: 80%;
+  max-width: 1900px; /* limit max width for large screens */
+  margin: 0 auto;
+}
+
+/* Each project box */
+.project-box {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 80vh; /* optional, for consistent height */
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: #a65a5a; /* optional background */
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;       /* stack children vertically */
+  align-items: stretch;          /* center horizontally */
+  justify-content: center;      /* center vertically */
+  width: 30%;                  /* fill parent width */
+  height: 100%;                 /* fill parent height for vertical centering */
+  align-items: stretch;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: rgb(79, 76, 76); /* your background */
+}
+
+/* Info header inside info section */
+.project-info h2 {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: .5rem;
+}
+
+.project-info p {
+    font-size: 1rem;
+    text-align: ;
+}
+
+
+/* Image section (remaining space) */
+.project-image {
+  flex: 1; /* take remaining space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
 /* #endregion */
 /*------------------------------------------------------------------------------------------------------------------------*/
 /* #region --- about --- */
@@ -533,6 +624,75 @@ body {
     grid-template-areas: none; /* Allows natural stacking on phones */
     gap: 1rem;
   }
+}
+
+
+
+
+/* ------------------------------------------------------------------------------------------------- */
+/* --------------------------------- SKILLS SECTION FIX ------------------------------------------ */
+
+.skills-section {
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: clamp(4rem, 8vh, 8rem) clamp(1.5rem, 5vw, 4rem);
+}
+
+.skills-section h2 {
+    margin-bottom: 2rem;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 500;
+}
+
+/* This container holds all your skill boxes and forces them into a responsive row */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap; /* CRITICAL: Allows boxes to drop to the next row when screen shrinks */
+    gap: 1.5rem; /* Space between the boxes */
+    justify-content: center; /* Centers the row of icons nicely */
+    align-items: stretch;
+}
+
+/* Individual Skill Box styling */
+.skill-box {
+    background: #f9f9f9;
+    border: 1px solid #eaeaea;
+    border-radius: 16px;
+    padding: 1.5rem;
+    
+    /* Ensures boxes share the row evenly but have a minimum and maximum constraint */
+    flex: 1 1 150px; 
+    max-width: 200px; 
+    min-height: 120px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease;
+}
+
+.skill-box:hover {
+    transform: translateY(-5px); /* Nice subtle lift effect on hover */
+}
+
+/* Ensures the icon/image inside the box scales correctly */
+.skill-box img,
+.skill-box i {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    font-size: 2.5rem; /* If using font icons like FontAwesome */
+}
+
+.skill-box span {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #333;
 }
 
 
@@ -732,18 +892,41 @@ body {
 }
 
 /* 5. FLEX GRID FOR LOGOS */
-.category-grid {
+.company-card {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 1rem;
     width: 100%;
+    max-width: 60px;
+    height: auto;
+}
+
+
+:root {
+  --icon-size: 40px; /* Default size, will be overwritten by JS */
 }
 
 .category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); /* Automatically packs logos in a row */
-    gap: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start; /* align left */
+  gap: 0rem; /* space between icons */
+  width: 100%;
+}
+
+.skill-card {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* align left inside skill card */
+}
+
+.skill-card img {
+  width: clamp(1rem, 10vh, 8rem);
+  height: auto;
+  border-radius: 20%;
 }
 
 /* ------------------------------------ SECTION 4 TIMELINE --------------------------------------------------------------------- */
@@ -914,6 +1097,13 @@ body {
     flex-direction: column;
 }
 
+.skill-card {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .square-pic {
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -964,7 +1154,11 @@ body {
     transform: translate(-50%, -42px); /* Moves it up 42px right above the image */
 }
 
-
+.skill-card:hover .hover-tab {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -42px); /* Moves it up 42px right above the image */
+}
 
 
 /* Mobile Adaptability */
@@ -1034,15 +1228,15 @@ body {
 .contact-content {
     display: grid;
     grid-template-columns: 6fr 4fr; 
-    gap: 4rem;
-    align-items: center;
+    gap: clamp(2rem, 15vw, 30rem);
+    align-items: end;
     
     width: 90%;
     max-width: 1900px;
     margin: -3rem auto 0 auto;
     
     /* Matches the exact left/right padding of your contact-header so they align perfectly */
-    padding: clamp(4rem, 25vh, 8rem) clamp(1rem, 1vw, 5rem);
+    padding: clamp(4rem, 10vh, 8rem) clamp(1rem, 1vw, 5rem);
 }
 
 .left-col {
@@ -1084,7 +1278,7 @@ body {
     /* Hidden by default, slides up on hover */
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px);
+    transform: translateY(42px);
     transition: all 0.3s ease;
     pointer-events: none; /* Stops the pill itself from interfering with mouse hovering */
 }
@@ -1095,6 +1289,9 @@ body {
     visibility: visible;
     transform: translateY(-50%, 0);
 }
+
+
+
 
 /* ------------------------------------ ICONS & TEXT --------------------------------------------------------------------- */
 
@@ -1122,14 +1319,13 @@ body {
 /* ------------------------------------ RIGHT IMAGE --------------------------------------------------------------------- */
 
 .right-col {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .feature-image {
-    width:clamp(1rem, 100vh, 13rem);
+    width:clamp(1rem, 100vh, 30rem);
     height: auto;
     object-fit: cover; 
     border-radius: 12px; 

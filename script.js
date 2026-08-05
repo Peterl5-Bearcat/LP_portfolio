@@ -78,3 +78,31 @@ if (backToTopBtn) {
     });
 }
 });
+
+
+
+
+
+// ===============================================================================================
+// experience page set icon size
+// ===============================================================================================
+
+function updateIconSize() {
+  const icons = document.querySelectorAll('.skill-card img');
+  let minWidth = Infinity;
+
+  // Measure all icon widths
+  icons.forEach(icon => {
+    const rect = icon.getBoundingClientRect();
+    if (rect.width < minWidth) {
+      minWidth = rect.width;
+    }
+  });
+
+  // Set CSS variable to smallest icon width
+  document.documentElement.style.setProperty('--icon-size', minWidth + 'px');
+}
+
+// Run on page load and on resize
+window.addEventListener('load', updateIconSize);
+window.addEventListener('resize', updateIconSize);
