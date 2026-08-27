@@ -4,23 +4,20 @@
  june 14, 2026
 -->
 
-
-<!-- bringing in font style -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | My Portfolio</title>
-    
+    <title>Connect | My Portfolio</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:wght@400;500;700&display=swap">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:wght@400;500;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body id="connect-page">
 
@@ -31,76 +28,63 @@
             <li><a href="about-me.html">about me</a></li>
             <li><a href="experience.html">experience</a></li>
             <li><a href="connect.html">connect</a></li>
-            <!-- download resume-->
             <li><a href="media/LP_Resume_07202026.pdf" download="LP_Resume_07202026.pdf">resume</a></li>
         </ul>
     </nav>
 
-<!------------------------------------- HEADER  ---------------------------------------------------------------------------->
-<!--------------------------------------------------------------------------------------------------------------------------->
+    <!------------------------------------- HEADER ------------------------------------------------>
 
+    <section class="contact-header fade-in-load">
+        <h1>contact</h1>
+    </section>
 
+    <!------------------------------------- CONTACT CONTENT -------------------------------------->
 
-<section class="contact-header fade-in-load">
-    <h1>contact</h1>
-</section>
+    <section class="contact-content reveal-on-scroll">
 
+        <!-- Left Column -->
+        <div class="left-col">
 
-
-
-<!------------------------------------- SECTION 1 ICONS  ---------------------------------------------------------------------------->
-<!--------------------------------------------------------------------------------------------------------------------------->
-
-
-<section class="contact-content">
-    
-<section class="contact-content">
-    
-    <!-- Left Column -->
-    <div class="left-col">
-        
-        <div class="contact-logo"> 
-            <!-- The wrapper keeps the hover pill attached to the icon -->
-            <div class="icon-wrapper">
-                <span class="hover-tab1">Outlook</span>
-                <img src="media/connect/outlook.jpg" alt="outlook" class="square-pic">
+            <div class="contact-logo">
+                <div class="icon-wrapper">
+                    <span class="hover-tab1">Outlook</span>
+                    <img src="media/connect/outlook.jpg" alt="outlook" class="square-pic">
+                </div>
+                <span class="contact-address">peterl5@mail.uc.edu</span>
             </div>
-            <!-- Your email address line -->
-            <span class="contact-address">peterl5@mail.uc.edu</span>
+
+            <div class="contact-logo">
+                <div class="icon-wrapper">
+                    <span class="hover-tab1">Gmail</span>
+                    <img src="media/connect/gmail.png" alt="gmail" class="square-pic">
+                </div>
+                <span class="contact-address">lilypeters113@gmail.com</span>
+            </div>
+
+            <div class="contact-logo">
+                <div class="icon-wrapper">
+                    <span class="hover-tab1">LinkedIn</span>
+                    <img src="media/connect/linkedin.png" alt="linkedin" class="square-pic">
+                </div>
+                <span class="contact-address">linkedin.com/in/lilypeters</span>
+            </div>
+
         </div>
 
-        <div class="contact-logo"> 
-            <div class="icon-wrapper">
-                <span class="hover-tab1">Gmail</span>
-                <img src="media/connect/gmail.png" alt="gmail" class="square-pic">
-            </div>
-            <span class="contact-address">lilypeters113@gmail.com</span>
+        <!-- Right Column -->
+        <div class="right-col">
+            <img src="media/connect/bone.png" alt="Contact Feature" class="feature-image">
         </div>
 
-        <div class="contact-logo"> 
-            <div class="icon-wrapper">
-                <span class="hover-tab">LinkedIn</span>
-                <img src="media/connect/linkedin.png" alt="linkedin" class="square-pic">
-            </div>
-            <span class="contact-address">linkedin.com/in/lilypeters</span>
-        </div>
-        
-    </div>
-        
-    <!-- Right Column -->
-    <div class="right-col">
-        <img src="media/connect/bone.png" alt="Contact Feature" class="feature-image">
-    </div>
+    </section>
 
-</section>
-  
+    <!------------------------------------- BACK TO TOP ------------------------------------------>
+
+    <footer class="site-footer">
+        <button class="back-to-top-btn" id="backToTop">
+            Back to Top &uarr;
+        </button>
+    </footer>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
